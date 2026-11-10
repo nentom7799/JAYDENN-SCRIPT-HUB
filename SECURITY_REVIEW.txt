@@ -1,0 +1,42 @@
+JAYDENN SCRIPT HUB — PRE-DELIVERY CODE REVIEW
+===============================================
+
+Review scope
+- Static frontend HTML/CSS/JavaScript
+- Supabase browser client integration
+- SQL schema and Row Level Security policies
+- No server-side secrets or bundled third-party scripts beyond Supabase JS CDN
+
+Checks performed during packaging
+1. JavaScript syntax checked with Node.js when available.
+2. Confirmed no service_role credential, password, token, or hard-coded secret is present. The literal term service_role appears only in safety comments.
+3. Confirmed user-entered/displayed resource fields are HTML-escaped before insertion into the page.
+4. Confirmed clipboard operation copies resource text only; it does not execute it.
+5. Confirmed Supabase writes require an authenticated session in the UI.
+6. Confirmed SQL enables RLS on both tables, permits an authenticated user to read only their own admin-allowlist row, and requires an explicit site_admins allowlist entry for writes.
+7. Confirmed no policy grants anonymous insert/update/delete.
+8. Confirmed the website uses sample placeholder resources, not exploit payloads.
+
+Important limitations
+- This is a code-level review, not a penetration test or a guarantee of absolute security.
+- Supabase RLS must be applied to the correct project and tested after deployment.
+- The supplied Supabase anon key is public by design; never expose service_role/secret keys.
+- A malicious or unsafe script could still be added by an authorized admin. Review each submission manually.
+- Visitor statistics are local-only in this starter build.
+- External CDN dependency: Supabase JS v2. For stricter supply-chain control, self-host and pin the library version before production.
+
+Release status
+- Suitable as a starter project for local preview.
+- Production publishing is conditional on completing the Supabase setup, verifying admin allowlisting/RLS, and testing the deployed site.
+
+Automated packaging check results:
+- REVIEW: No service role key in frontend
+- PASS: HTML escaping helper present
+- PASS: Clipboard copies text, does not execute
+- PASS: RLS enabled on scripts
+- PASS: RLS enabled on admins
+- PASS: Admin allowlist required for writes
+- PASS: No anonymous write policy
+- PASS: JavaScript syntax
+
+Additional SQL review: the site_admins SELECT policy exposes only the signed-in user's own allowlist row, allowing the scripts write policies to validate membership under RLS.

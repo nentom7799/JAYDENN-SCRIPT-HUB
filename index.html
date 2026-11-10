@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050b1d">
+  <meta name="description" content="JAYDENN Script Hub — a curated library for community-shared Roblox Studio resources.">
+  <title>JAYDENN — Script Hub</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="JAYDENN home"><span class="brand-mark">J</span><span>JAYDENN<span class="brand-sub">SCRIPT HUB</span></span></a>
+    <nav><a href="#library">Library</a><a href="#about">About</a><button id="adminOpen" class="btn btn-outline">Admin</button></nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="live-dot"></span> COMMUNITY RESOURCE LIBRARY</div>
+        <h1>PLAY. CREATE.<br><span>BE LEGENDARY.</span></h1>
+        <p>Discover community-shared Roblox Studio resources, tools and learning scripts — all in one place.</p>
+        <a class="btn btn-primary" href="#library">Explore library <span>↗</span></a>
+        <div class="hero-stats"><div><strong id="statScripts">0</strong><small>RESOURCES</small></div><div><strong id="statCategories">0</strong><small>CATEGORIES</small></div><div><strong id="statViews">0</strong><small>LOCAL VISITS</small></div></div>
+      </div>
+      <div class="hero-art">
+        <img src="assets/jaydenn-branding.jpg" alt="JAYDENN gaming community artwork" onerror="this.style.display='none'">
+        <div class="art-fallback"><span>J</span><b>JAYDENN</b><small>GAMING COMMUNITY</small></div>
+        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+      </div>
+    </section>
+
+    <section class="library-section" id="library">
+      <div class="section-heading"><div><div class="eyebrow">THE COLLECTION</div><h2>Script <span>Library</span></h2><p>Browse trusted resources shared by the community.</p></div><div class="count-pill"><i></i><span id="resultCount">0 resources</span></div></div>
+      <div class="toolbar">
+        <label class="searchbox"><span>⌕</span><input id="searchInput" type="search" placeholder="Search resources or games..." autocomplete="off"></label>
+        <div class="filters" role="group" aria-label="Resource filters">
+          <button class="filter active" data-filter="all">All</button><button class="filter" data-filter="key">Key required</button><button class="filter" data-filter="no-key">No key</button>
+        </div>
+      </div>
+      <div id="categoryRow" class="category-row"></div>
+      <div id="scriptGrid" class="script-grid" aria-live="polite"></div>
+      <div id="emptyState" class="empty-state" hidden><div>⌕</div><h3>No resources found</h3><p>Try another search or category.</p></div>
+      <p class="notice">Only share resources you own or are authorized to distribute. This hub is not affiliated with Roblox.</p>
+    </section>
+
+    <section class="about" id="about"><div class="about-icon">✦</div><div><div class="eyebrow">BUILT FOR THE COMMUNITY</div><h2>Share knowledge.<br><span>Build something great.</span></h2><p>JAYDENN is a community resource directory. Review each resource before using it and never paste unknown code into a game or executor.</p></div></section>
+  </main>
+
+  <footer><a class="brand" href="#"><span class="brand-mark">J</span><span>JAYDENN<span class="brand-sub">SCRIPT HUB</span></span></a><span>© <span id="year"></span> JAYDENN Community. Built with care.</span></footer>
+
+  <div class="modal-backdrop" id="adminModal" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+      <button class="modal-close" id="adminClose" aria-label="Close">×</button>
+      <div class="eyebrow">OWNER CONTROL PANEL</div><h2 id="adminTitle">Admin <span>Dashboard</span></h2>
+      <div id="loginPanel">
+        <p class="muted">Sign in with your Supabase admin account.</p>
+        <label>Email<input id="adminEmail" type="email" autocomplete="username" placeholder="admin@example.com"></label>
+        <label>Password<input id="adminPassword" type="password" autocomplete="current-password" placeholder="Password"></label>
+        <button class="btn btn-primary full" id="loginButton">Sign in</button>
+      </div>
+      <div id="managePanel" hidden>
+        <div class="admin-top"><span class="status-chip">Authenticated</span><button id="logoutButton" class="text-button">Sign out</button></div>
+        <form id="scriptForm">
+          <input id="editId" type="hidden">
+          <label>Resource title<input id="scriptTitle" maxlength="70" required placeholder="Example: Studio UI helper"></label>
+          <label>Game / category<input id="scriptGame" maxlength="50" required placeholder="Example: Roblox Studio"></label>
+          <label>Access type<select id="scriptAccess"><option value="no-key">No key</option><option value="key">Key required</option></select></label>
+          <label>Short description<textarea id="scriptDescription" maxlength="220" rows="2" placeholder="What does this resource do?"></textarea></label>
+          <label>Resource code / text<textarea id="scriptCode" maxlength="30000" rows="6" required placeholder="Paste only code you own or may redistribute."></textarea></label>
+          <div class="form-actions"><button class="btn btn-primary" type="submit" id="saveButton">Save resource</button><button class="btn btn-outline" type="button" id="resetForm">Clear</button></div>
+        </form>
+        <div class="admin-list"><h3>Manage resources</h3><div id="adminList"></div></div>
+      </div>
+      <p class="modal-message" id="adminMessage" role="status"></p>
+      <p class="tiny-note">Admin writes require Supabase authentication and database policies. Do not publish service-role keys in this website.</p>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
