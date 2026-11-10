@@ -18,9 +18,24 @@
       <span class="brand-mark">J</span>
       <span>JAYDENN<span class="brand-sub">SCRIPT HUB</span></span>
     </a>
+
     <nav>
       <a href="#library">Library</a>
       <a href="#about">About</a>
+
+      <!-- PREMIUM TELEGRAM HEADER -->
+      <a class="telegram-premium"
+         href="https://t.me/+y1PQ_shp1yA5ZjQ1"
+         target="_blank"
+         rel="noopener noreferrer">
+        <span class="telegram-icon">➤</span>
+        <span class="telegram-text">
+          <small>JOIN OUR COMMUNITY</small>
+          <strong>TELEGRAM</strong>
+        </span>
+        <span class="telegram-arrow">↗</span>
+      </a>
+
       <button id="adminOpen" class="btn btn-outline">Admin</button>
     </nav>
   </header>
@@ -133,6 +148,20 @@
       <span class="brand-mark">J</span>
       <span>JAYDENN<span class="brand-sub">SCRIPT HUB</span></span>
     </a>
+
+    <!-- PREMIUM TELEGRAM FOOTER -->
+    <a class="telegram-premium telegram-footer"
+       href="https://t.me/+y1PQ_shp1yA5ZjQ1"
+       target="_blank"
+       rel="noopener noreferrer">
+      <span class="telegram-icon">➤</span>
+      <span class="telegram-text">
+        <small>CONNECT WITH US</small>
+        <strong>JOIN TELEGRAM</strong>
+      </span>
+      <span class="telegram-arrow">↗</span>
+    </a>
+
     <span>
       © <span id="year"></span> JAYDENN Community. Built with care.
     </span>
@@ -151,28 +180,21 @@
       <div class="eyebrow">OWNER CONTROL PANEL</div>
       <h2 id="adminTitle">Admin <span>Dashboard</span></h2>
 
-      <!-- LOGIN -->
       <div id="loginPanel">
         <p class="muted">Sign in with your Supabase admin account.</p>
 
         <label>
           Email
-          <input
-            id="adminEmail"
-            type="email"
-            autocomplete="username"
-            placeholder="admin@example.com"
-          >
+          <input id="adminEmail" type="email"
+                 autocomplete="username"
+                 placeholder="admin@example.com">
         </label>
 
         <label>
           Password
-          <input
-            id="adminPassword"
-            type="password"
-            autocomplete="current-password"
-            placeholder="Password"
-          >
+          <input id="adminPassword" type="password"
+                 autocomplete="current-password"
+                 placeholder="Password">
         </label>
 
         <button class="btn btn-primary full" id="loginButton">
@@ -180,7 +202,6 @@
         </button>
       </div>
 
-      <!-- ADMIN MANAGEMENT -->
       <div id="managePanel" hidden>
         <div class="admin-top">
           <span class="status-chip">Authenticated</span>
@@ -192,22 +213,14 @@
 
           <label>
             Resource title
-            <input
-              id="scriptTitle"
-              maxlength="70"
-              required
-              placeholder="Example: Studio UI helper"
-            >
+            <input id="scriptTitle" maxlength="70" required
+                   placeholder="Example: Studio UI helper">
           </label>
 
           <label>
             Game / category
-            <input
-              id="scriptGame"
-              maxlength="50"
-              required
-              placeholder="Example: Roblox Studio"
-            >
+            <input id="scriptGame" maxlength="50" required
+                   placeholder="Example: Roblox Studio">
           </label>
 
           <label>
@@ -220,12 +233,9 @@
 
           <label>
             Short description
-            <textarea
-              id="scriptDescription"
-              maxlength="220"
-              rows="2"
-              placeholder="What does this resource do?"
-            ></textarea>
+            <textarea id="scriptDescription" maxlength="220"
+                      rows="2"
+                      placeholder="What does this resource do?"></textarea>
           </label>
 
           <!-- IMAGE UPLOAD -->
@@ -233,39 +243,20 @@
             <h3>🖼️ Resource Images</h3>
             <p>Upload images to make your resource look professional.</p>
 
-            <label for="coverImage">
-              Cover Image (Large)
-            </label>
+            <label for="coverImage">Cover Image (Large)</label>
+            <input type="file" id="coverImage"
+                   accept="image/png,image/jpeg,image/webp">
 
-            <input
-              type="file"
-              id="coverImage"
-              accept="image/png,image/jpeg,image/webp"
-            >
+            <img id="coverPreview" class="image-preview"
+                 alt="Cover image preview" hidden>
 
-            <img
-              id="coverPreview"
-              class="image-preview"
-              alt="Cover image preview"
-              hidden
-            >
+            <label for="thumbnailImage">Thumbnail Image (Small)</label>
+            <input type="file" id="thumbnailImage"
+                   accept="image/png,image/jpeg,image/webp">
 
-            <label for="thumbnailImage">
-              Thumbnail Image (Small)
-            </label>
-
-            <input
-              type="file"
-              id="thumbnailImage"
-              accept="image/png,image/jpeg,image/webp"
-            >
-
-            <img
-              id="thumbnailPreview"
-              class="image-preview thumbnail-preview"
-              alt="Thumbnail image preview"
-              hidden
-            >
+            <img id="thumbnailPreview"
+                 class="image-preview thumbnail-preview"
+                 alt="Thumbnail image preview" hidden>
 
             <p class="image-help">
               JPG, PNG or WebP · Maximum 5 MB per image.
@@ -274,31 +265,16 @@
 
           <label>
             Resource code / text
-            <textarea
-              id="scriptCode"
-              maxlength="30000"
-              rows="6"
-              required
-              placeholder="Paste only code you own or may redistribute."
-            ></textarea>
+            <textarea id="scriptCode" maxlength="30000"
+                      rows="6" required
+                      placeholder="Paste only code you own or may redistribute."></textarea>
           </label>
 
           <div class="form-actions">
-            <button
-              class="btn btn-primary"
-              type="submit"
-              id="saveButton"
-            >
-              Save resource
-            </button>
-
-            <button
-              class="btn btn-outline"
-              type="button"
-              id="resetForm"
-            >
-              Clear
-            </button>
+            <button class="btn btn-primary" type="submit"
+                    id="saveButton">Save resource</button>
+            <button class="btn btn-outline" type="button"
+                    id="resetForm">Clear</button>
           </div>
         </form>
 
@@ -324,3 +300,4 @@
   <script src="app.js"></script>
 </body>
 </html>
+
